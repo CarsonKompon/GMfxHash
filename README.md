@@ -12,9 +12,11 @@ In your project, select `Tools > Import Local Package` from the toolbar at the t
 
 Now, export an HTML5 build of your game and copy the `index.html` file into your project's `datafiles` folder (also known as Included Files). Open the file in a text editor and include the [fx(hash) code snippet](https://www.fxhash.xyz/doc/artist/guide-publish-generative-token#fxhash-code-snippet) somewhere in the `<head>` section. Back in GameMaker, go to your HTML5 Game Options and change the `Included file as index.html` to `index.html` instead of `Use Default`.
 
+If you will be using features in your project, add a new `<script></script>` tag somewhere before everything else in the `<body>` tags and generate all features within that script and save them to `window.$fxhashFeatures` so they can be read from GameMaker.
+
 ###### If you downloaded the Template:
 
-Once you create a project from the downloaded `.yyz` file, go to the `datafiles` folder (also known as Included Files) and open the `index.html` file in a text editor. Change the text within the `<title>` tags to reflect your project if you don't wish for it to simply say "fx(hash)".
+Once you create a project from the downloaded `.yyz` file, go to the `datafiles` folder (also known as Included Files) and open the `index.html` file in a text editor. Change the text within the `<title>` tags to reflect your project if you don't wish for it to simply say "fx(hash)". Then scroll down to the `<body>` tags and find the first set of `<script>` tags that contain feature generation. This is where you will set your own fx(hash) features, so if you don't wish to use features you can delete the script tags altogether.
 
 If you don't plan on using `window_set_size(w,h)` to change the canvas size, you should either:
 a) Change the `width` and `height` properties of the `<canvas>` tag to reflect your room width and height
@@ -43,6 +45,10 @@ A function you can call when your code is ready to be captured when using "Progr
 #### `isFxpreview`
 
 A boolean, true when the code is executed to take the capture, false otherwise.
+
+#### `fxfeatures(_default = {})`
+
+A function that returns `window.$fxhashFeatures` when in HTML5. Otherwise, it will return the `_default` struct.
 
 #### `fxrandi(_max = 1)`
 
