@@ -1,12 +1,11 @@
 /*
-	GMfxHash v1.0.0 by Carson Kompon (06/11/2022)
+	GMfxHash v1.1.0 by Carson Kompon (06/17/2022)
 	
 	
 	Functions that are prefixed with `GMfxHash_` are direct calls to the functions
 	from the fx(hash) snippet. However, These functions ONLY work when in HTML5.
 	So you should instead use the non-prefixed functions, as they emulate the fx(hash)
 	snippet when running on platforms other than HTML5.
-	
 	
 	
 	DOCUMENTATION:
@@ -31,6 +30,9 @@
 	`fxpreview()`			A function you can call whenever the code is ready to be captured.
 	
 	`isFxpreview`			A boolean, true when the code is executed to take the capture, false otherwise.
+	
+	`fxfeatures(x={})`		A function that returns the window.$fxhashFeatures struct from javascript, or
+							returns x when not on HTML5. X can optionally be a function.
 */
 
 
@@ -107,6 +109,17 @@ function fxpreview(){
 		show_debug_message("fxhash: TRIGGER PREVIEW");
 	}else{
 		GMfxHash_fxpreview();	
+	}
+}
+
+/// A function that returns the fxhash features
+/// @param {any} _default={} A struct or function that returns when not running on HTML5
+/// @returns {struct}
+function fxfeatures(_default = {}){
+	if(os_browser == browser_not_a_browser){
+		return _default
+	}else{
+		return json_parse(GMfxHash_features());
 	}
 }
 

@@ -108,6 +108,24 @@
     </head>
 
     <body>
+		<!-- Set the fx(hash) features -->
+		<script type="text/javascript">
+			// Functions for easier fxrand usage by Carson Kompon
+            function randi_range(low, high){ return Math.floor(fxrand()*((high+1)-low))+low; }
+            function randf_range(low, high){ return (fxrand()*(high-low))+low; }
+            function choose(arr){
+                var _i = randi_range(0,arr.length-1);
+                return arr[_i];
+            }
+			
+			// Set the features
+			window.$fxhashFeatures = {
+				"Shape": choose(["Square", "Circle", "Triangle"]),
+				"Shape Size": randi_range(8,64),
+				"Shape Color": choose(["Red", "Green", "Blue"])
+			}
+		</script>
+		
         <div class="gm4html5_div_class" id="gm4html5_div_id">
             <!-- Create the canvas element the game draws to -->
             <canvas id="canvas" width="256" height="256"  style="position: absolute; top: 50%; left: 50%; bottom: -50%; right: -50%; transform: translate(-50%, -50%);" >

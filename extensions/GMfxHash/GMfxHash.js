@@ -14,3 +14,7 @@ function GMfxHash_fxpreview() {
 function GMfxHash_isFxpreview(){
 	return isFxpreview;
 }
+
+function GMfxHash_features(){
+	return JSON.stringify(window.$fxhashFeatures);
+}
