@@ -1,6 +1,6 @@
 # GMfxHash
 
-*An fx(hash) extension for GameMaker. This doesn't include anything for setting features (yet).*
+*An fx(hash) extension for GameMaker.*
 
 ## Getting Started
 
